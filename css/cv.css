@@ -1,4 +1,3 @@
-
 :root{
   --ink:        #182029;   /* sidebar / texte principal */
   --ink-soft:   #4b5563;   /* texte secondaire */
@@ -85,9 +84,6 @@ a{ color: inherit; }
   display: block;
 }
 
-/* Si tu n'as pas encore de photo, ce bloc affiche des initiales.
-   Remplace juste le <img> ci-dessous par ta propre photo pour
-   que ce fallback disparaisse. */
 .avatar .fallback{
   font-family: var(--font-display);
   font-size: 2.4rem;
@@ -182,8 +178,6 @@ a{ color: inherit; }
   max-width: 62ch;
 }
 
-/* Titres de section façon "commentaire de code" — clin d'œil
-   au métier de développeur, utilisé comme signature visuelle */
 .section{ margin-top: 48px; }
 
 .section-title{
@@ -211,7 +205,7 @@ a{ color: inherit; }
   margin-left: 6px;
 }
 
-/* --- Connaissances (grid de chips) --- */
+/* --- Connaissances --- */
 .skills-grid{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -236,7 +230,7 @@ a{ color: inherit; }
   margin-bottom: 4px;
 }
 
-/* --- Expérience (timeline) --- */
+/* --- Expérience --- */
 .timeline{
   position: relative;
   padding-left: 28px;
@@ -320,10 +314,6 @@ a{ color: inherit; }
   margin-top: 4px;
 }
 
-/* ==========================================================
-   CORRECTIFS — intégration dans la page (conflits Bootstrap)
-   ========================================================== */
-
 .cv-wrapper{
   min-height: auto;
 }
@@ -338,22 +328,47 @@ a{ color: inherit; }
   margin-bottom: 0;
 }
 
-/* Neutralise .cv-section p { margin-bottom: 5rem } qui écrasait
-   l'espacement des <p> dans .edu-item et .skill-card */
 .cv-wrapper p{
   margin-bottom: 0 !important;
 }
 
-/* Neutralise .text-center !important de Bootstrap si la classe
-   reste présente sur la section parente */
 .cv-wrapper,
 .cv-wrapper *{
   text-align: left;
 }
 
-/* Les éléments qui doivent rester centrés (photo, avatar) le
-   restent via leurs propres règles flex/margin auto, donc ce
-   reset ne les affecte pas visuellement */
+.cv-wrapper{
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.sidebar,
+.main,
+.timeline-item,
+.edu-item,
+.skill-card,
+.side-block{
+  min-width: 0;
+}
+
+.section-title,
+.contact-list li,
+.timeline-item h3,
+.timeline-item .subtitle,
+.timeline-item ul li,
+.edu-item h3,
+.edu-item p,
+.skill-card,
+.tag-list li,
+.plain-list li{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.skills-grid{
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+  min-width: 0;
+}
 
 /* ==========================================================
    PRINT (export PDF propre depuis le navigateur)
@@ -363,4 +378,3 @@ a{ color: inherit; }
   .cv-wrapper{ box-shadow:none; grid-template-columns: 260px 1fr; }
   .sidebar{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
-
